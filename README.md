@@ -258,7 +258,7 @@ If a task and is defined, one or more services are associated with the task, pro
       * **variables.tf:**
         * This is variables.tf file defined in the module
         
-         Example of generated variables.tf
+         Example of generated variables.tf:
          ```terraform
          #
          # The HCL blocks, arguments, variables, and values are derived from the
@@ -306,12 +306,12 @@ If a task and is defined, one or more services are associated with the task, pro
          * This variables file is generated with the most updated values from Consul catalog for all the services identified in the task.
          * consul-terraform-sync updates this file with the latest values when the corresponding service gets updated in Consul catalog.
          
-         Example of generated terraform.tfvars
+         Example of generated terraform.tfvars:
          
          ```terraform
          services = {
            "web0" : {
-             id              = "web1"
+             id e             = "web1"
              name            = "web"
              address         = "172.31.51.85"
              port            = 80
