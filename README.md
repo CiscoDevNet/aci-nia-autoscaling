@@ -31,7 +31,7 @@ The **consul-terraform-sync** runs as a daemon that enables a **publisher-subscr
 
 * Each task consists of a runbook automation written as a compatible **Terraform module** using resources and data sources for the underlying network infrastructure provider.
 
-Please refer to this [link (to be updated)](https://www.consul.io/docs/download-tools) for getting started with **consul-terraform-sync**
+Please refer to this [link](https://www.consul.io/docs/nia) for getting started with **consul-terraform-sync**
 
 ## Requirements
 
