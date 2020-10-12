@@ -6,20 +6,20 @@ The **Cisco ACI** fabric can act as a distributed stateless load-balancer sittin
 
 Using this Terraform module in conjunction with **consul-terraform-sync** enables administrators to automatically scale out or scale in backend server pools without having to manually reconfigure **Cisco ACI** policies.
 
-#### Note: This Terraform module is designed to be used only with **consul-terraform-sync**
+#### Note: This Terraform module is designed to be used only with **consul-terraform-sync**.
 
 
 ## Feature
 This module supports the following:
-* Create, Update and Delete Redirection Destination Policies (**vnsRedirectDest**)
+* Create, Update and Delete Redirection Destination Policies (**vnsRedirectDest**).
 * Create and Update Service Redirection Policies (**vnsSvcRedirectPol**). 
 
 If there is a missing feature or a bug - [open an issue ](https://github.com/CiscoDevNet/terraform-aci-autoscaling-nia/issues/new)
 
 ## Caveats
-* Currently Consul nodes MAC address must be specified as `meta` in the Consul service definition
-* If the redirection policy becomes empty (no remaining healthy service), it is not deleted
-* All Consul services part of the same "task" must be defined in the same ACI VRF
+* Currently Consul nodes MAC address must be specified as `meta` in the Consul service definition.
+* If the redirection policy becomes empty (no remaining healthy service), it is not deleted.
+* All Consul services part of the same "task" must be defined in the same ACI VRF.
 
 **~>Note** This module only manages Redirection Policy lifecycle, it does not automate the creation of the Service-Graph template and deployment.
 
@@ -31,7 +31,7 @@ The **consul-terraform-sync** runs as a daemon that enables a **publisher-subscr
 
 * Each task consists of a runbook automation written as a compatible **Terraform module** using resources and data sources for the underlying network infrastructure provider.
 
-Please refer to this [link](https://www.consul.io/docs/nia) for getting started with **consul-terraform-sync**
+Please refer to this [link](https://www.consul.io/docs/nia) for getting started with **consul-terraform-sync**.
 
 ## Requirements
 
@@ -49,7 +49,7 @@ Please refer to this [link](https://www.consul.io/docs/nia) for getting started 
 
 
 ## Compatibility
-This module is meant for use with **consul-terraform-sync >= 0.1.0**, **Terraform >= 0.13** and **Cisco ACI >= 4.2**
+This module is meant for use with **consul-terraform-sync >= 0.1.0**, **Terraform >= 0.13** and **Cisco ACI >= 4.2**.
 
 ## Usage
 In order to use this module, you will need to install **consul-terraform-sync**, create a **"task"** with this Terraform module as a source within the task, and run **consul-terraform-sync**.
@@ -57,9 +57,9 @@ In order to use this module, you will need to install **consul-terraform-sync**,
 The users can subscribe to the services in the consul catalog and define the Terraform module which will be executed when there are any updates to the subscribed services using a **"task"**.
 
 **~> Note:** It is recommended to have the [consul-terraform-sync config guide](https://www.consul.io/docs/nia) for reference.  
-1. Download the **consul-terraform-sync** on a node which is highly available (preferably, a node running a consul client)
-2. Add **consul-terraform-sync** to the PATH on that node
-3. Check the installation
+1. Download the **consul-terraform-sync** on a node which is highly available (preferably, a node running a consul client).
+2. Add **consul-terraform-sync** to the PATH on that node.
+3. Check the installation.
    ```
    $ consul-terraform-sync --version
    0.1.0
@@ -117,7 +117,7 @@ task {
 tenant_name                       = "common"
 service_redirection_policy_prefix = "nia"
 ```
- 6. Start consul-terraform-sync
+ 6. Start consul-terraform-sync.
 ```
 $ consul-terraform-sync -config-dir <path_to_configuration_directory>
 ```
@@ -131,7 +131,7 @@ $ consul-terraform-sync -config-dir <path_to_configuration_directory>
 
 
 
-## Inputs
+## Inputs:
 
 | Name | Description | Type | Default | Required |
 |------|-------------------------------------|------|---------|:--------:|
@@ -140,7 +140,7 @@ $ consul-terraform-sync -config-dir <path_to_configuration_directory>
 | services | Consul services monitored by consul-terraform-sync | <pre>map(<br>    object({<br>      id        = string<br>      name      = string<br>      address   = string<br>      port      = number<br>      meta      = map(string)<br>      tags      = list(string)<br>      namespace = string<br>      status    = string<br><br>      node                  = string<br>      node_id               = string<br>      node_address          = string<br>      node_datacenter       = string<br>      node_tagged_addresses = map(string)<br>      node_meta             = map(string)<br>    })<br>  )</pre> | n/a | yes |
 
 
-## Outputs
+## Outputs:
 
 | Name | Description |
 |------|-------------|
@@ -212,7 +212,7 @@ If a task and is defined, one or more services are associated with the task, pro
    5. Within each sub-directory corresponding a task, consul-terraform-sync will template a main.tf, variables.tf, terraform.tfvars and terraform.tfvars.tmpl.
       * **main.tf:**
          * This files contains declaration for the required terraform and provider versions based on the task definition. 
-         * In addition, this file has the module (identified by the 'source' field in the task) declaration with the input variables
+         * In addition, this file has the module (identified by the 'source' field in the task) declaration with the input variables.
          * Consul K/V is used as the backend state for fo this Terraform workspace.
       
          Example of generated main.tf:
@@ -256,7 +256,7 @@ If a task and is defined, one or more services are associated with the task, pro
          }
          ```
       * **variables.tf:**
-        * This is variables.tf file defined in the module
+        * This is the variables.tf file defined in the module.
         
          Example of generated variables.tf:
          ```terraform
@@ -337,7 +337,7 @@ If a task and is defined, one or more services are associated with the task, pro
            }
          }
          ```
-      * **Network Infrastructure Automation (NIA) compatible modules are built to utilize the above service variables**
+      * **Network Infrastructure Automation (NIA) compatible modules are built to utilize the above service variables**.
     6. **consul-terraform-sync** manages the entire Terraform workflow of plan, apply and destroy for all the individual workspaces corrresponding to the defined     "tasks" based on the updates to the services to those tasks.
     
   **In summary, consul-terraform-sync triggers a Terraform workflow (plan, apply, destroy) based on updates it detects from Consul catalog.**
