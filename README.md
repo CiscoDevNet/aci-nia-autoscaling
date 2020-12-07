@@ -2,7 +2,7 @@
 
 This Terraform module allows users to dynamically create and update **Cisco ACI** Service Redirection Policy and Destinations by leveraging [Consul](https://www.consul.io/) catalog information.  
 
-The **Cisco ACI** fabric can act as a distributed stateless load-balancer sitting in front of any pool of workloads, regardless of their form-factor. For this module to work, the user should have deployed a Service-Graph template with PBR and service redirection enabled. For more information on how to deploy Cisco ACI Service Graph and PBR, please refer to the configuration guide and this [white paper](https://www.cisco.com/c/en/us/solutions/collateral/data-center-virtualization/application-centric-infrastructure/white-paper-c11-739971.html).
+The **Cisco ACI** fabric can act as a distributed stateless load-balancer sitting in front of any pool of workloads, regardless of their form-factor. For this module to work, the user should have deployed a Service-Graph template with Policy-Based Redirect (PBR) and service redirection enabled. For more information on how to deploy Cisco ACI Service Graph and PBR, please refer to the configuration guide and this [white paper](https://www.cisco.com/c/en/us/solutions/collateral/data-center-virtualization/application-centric-infrastructure/white-paper-c11-739971.html).
 
 Using this Terraform module in conjunction with **consul-terraform-sync** enables administrators to automatically scale out or scale in backend server pools without having to manually reconfigure **Cisco ACI** policies.
 
