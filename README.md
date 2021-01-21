@@ -37,10 +37,11 @@ Please refer to this [link](https://www.consul.io/docs/nia) for getting started 
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.13 |
-| consul-terraform-sync | >= 0.1.0 |
-| consul | >= 1.7 |
+| [terraform](https://www.terraform.io/downloads.html) | >= 0.13 |
+| [consul-terraform-sync](https://www.consul.io/docs/nia/installation/install) | >= 0.1.0 |
+| [consul](https://www.consul.io/downloads) | >= 1.7 |
 
+Links refer to download and installation/instructions for each component.
 ## Providers
 
 | Name | Version |
